@@ -14,7 +14,8 @@
 			var input = WebMidi.getInputByName("Launchkey Mini");
 			var inputIncontrol = WebMidi.getInputByName("MIDIIN2 (Launchkey Mini)");
 			var incontrol = WebMidi.getOutputByName("MIDIOUT2 (Launchkey Mini)");
-			incontrol.playNote("12", "all", {velocity: 127});
+			var incontrol2 = WebMidi.outputs[1];
+			incontrol2.playNote("12", "all", {velocity: 127});
 
 			/*input.addListener('noteon', "all",
     				function (e) {
