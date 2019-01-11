@@ -1,0 +1,52 @@
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
+	<script type="text/javascript">
+
+	WebMidi.enable(function (err) {
+
+  		if (err) {
+    			console.log("WebMidi could not be enabled.", err);
+  		} else {
+    			console.log("WebMidi enabled!");
+  			console.log(WebMidi.inputs);
+    			console.log(WebMidi.outputs);
+			var input = WebMidi.getInputByName("Launchkey Mini");
+			var inputIncontrol = WebMidi.getInputByName("MIDIIN2 (Launchkey Mini)");
+			var incontrol = WebMidi.getOutputByName("MIDIOUT2 (Launchkey Mini)");
+			incontrol.playNote("12", "all", {velocity: 127});
+
+			/*input.addListener('noteon', "all",
+    				function (e) {
+      				console.log("[LAUNCHKEY] Received 'noteon' message (" + e.note.name + e.note.octave + ").");
+    				}
+  			);
+
+			inputIncontrol.addListener('noteon', "all",
+    				function (e) {
+      				console.log("[INCONTROL] Received 'noteon' message (" + e.note.name + e.note.octave + ").");
+    				}
+  			);
+ 	
+			input.addListener('controlchange', "all",
+    				function (e) {
+      					console.log("[LAUNCHKEY] Received 'controlchange' message.", e);
+    				}
+  			);
+
+			inputIncontrol.addListener('controlchange', "all",
+    				function (e) {
+      					console.log("[INCONTROL] Received 'controlchange' message.", e);
+    				}
+  			);*/
+  		}
+  
+
+	});
+
+
+	</script>  
+</head>
+<body>
+</body>
+</html>
