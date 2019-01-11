@@ -7,15 +7,20 @@
 
   		if (err) {
     			console.log("WebMidi could not be enabled.", err);
+			document.getElementById('log').innerHTML += "<p> WebMidi could not be enabled <br />" + err + "</p>";
   		} else {
     			console.log("WebMidi enabled!");
+			document.getElementById('log').innerHTML += "<p> WebMidi enabled </p>";
   			console.log(WebMidi.inputs);
     			console.log(WebMidi.outputs);
+			document.getElementById('log').innerHTML += "<p> Inputs <br />" + WebMidi.inputs + "</p>";
+			document.getElementById('log').innerHTML += "<p> Outputs <br />" + WebMidi.outputs + "</p>";
+			
 			var input = WebMidi.getInputByName("Launchkey Mini");
 			var inputIncontrol = WebMidi.getInputByName("MIDIIN2 (Launchkey Mini)");
+			
 			var incontrol = WebMidi.getOutputByName("MIDIOUT2 (Launchkey Mini)");
-			var incontrol2 = WebMidi.outputs[1];
-			incontrol2.playNote("12", "all", {velocity: 127});
+			incontrol.playNote("12", "all", {velocity: 127});
 
 			/*input.addListener('noteon', "all",
     				function (e) {
@@ -49,5 +54,6 @@
 	</script>  
 </head>
 <body>
+	<div id="log"></div>
 </body>
 </html>
